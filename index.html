@@ -10,7 +10,7 @@
     <table>
         <tr>
             <td>
-                    Gorman Technology, Git Repositories.
+                    Gorman Technology, Git Repository.
                     <ul id="repo"></ul>
 
             </td>
@@ -30,12 +30,19 @@
         if (err) { throw 'outch ...' }
         console.log(repos);
         _.each(repos, function (repo) {
+
+            var pages=$("<div/>");
+            if(repo.has_pages)
+            {
+                pages=$("<a/>");
+                pages.attr('href', "https://gormantec.github.io/"+repo.name).text("[web page]");
+            }
           $('#repo').append(
             $('<li/>').append(
               $('<a/>')
                 .attr('href', repo.html_url)
                 .text(repo.name)
-            )
+            ).append(pages)
           );
         })
       });
