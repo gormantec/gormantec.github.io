@@ -12,23 +12,6 @@
     <script src="../gh3/vendors/underscore-min.js"></script>
     <script src="../gh3/gh3.js"></script>
     <script>
-
-      Gh3.Search.users({
-        q: '+language:Python', 
-        sort: 'followers'
-      }, {per_page: 50}, function (err, users) {
-        if (err) { throw 'outch ...' }
-        console.log(users);
-        _.each(users, function (user) {
-          $('#user').append(
-            $('<li/>').append(
-              $('<a/>')
-                .attr('href', user.html_url)
-                .text(user.login)
-            )
-          );
-        })
-      });
       Gh3.Search.repos({
         q: 'gormantec',
         sort: 'stars',
