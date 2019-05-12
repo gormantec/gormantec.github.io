@@ -12,13 +12,7 @@
     <script src="../gh3/vendors/underscore-min.js"></script>
     <script src="../gh3/gh3.js"></script>
     <script>
-      Gh3.Search.issues({
-        q: 'windows+label:bug+language:python+state:open',
-        sort: 'created',
-        order: 'asc'
-      }, {}, function (err, res) {
-        console.log(res); 
-      });
+
       Gh3.Search.users({
         q: '+language:Python', 
         sort: 'followers'
@@ -36,17 +30,23 @@
         })
       });
       Gh3.Search.repos({
-        q: 'tetris+language:assembly',
+        q: 'gormantec',
         sort: 'stars',
         order: 'desc'
       }, {}, function (err, repos) {
+        if (err) { throw 'outch ...' }
         console.log(repos);
+        _.each(repos, function (repo) {
+          $('#user').append(
+            $('<li/>').append(
+              $('<a/>')
+                .attr('href', repo.html_url)
+                .text(repo.name)
+            )
+          );
+        })
       });
-      Gh3.Search.code({
-        q: 'addClass+in:file+language:js+repo:jquery/jquery',
-      }, {}, function (err, code) {
-        console.log(code);
-      });
+
     </script>
 
 </body>
