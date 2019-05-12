@@ -68,7 +68,7 @@
             {
                 pages=$("<a/>");
                 pages.attr('href', "https://git.gormantec.com/"+repo.name).text(repo.name);
-                $('#repo').append(createTile("","")); 
+                $('#repo').append(createTile(repo.name,repo.description)); 
             }
           
         })
