@@ -35,15 +35,10 @@
             if(repo.has_pages)
             {
                 pages=$("<a/>");
-                pages.attr('href', "https://gormantec.github.io/"+repo.name).text("[web page]");
+                pages.attr('href', "https://git.gormantec.com/"+repo.name).text(repo.name);
+                $('#repo').append($('<li/>').append(pages)); 
             }
-          $('#repo').append(
-            $('<li/>').append(
-              $('<a/>')
-                .attr('href', repo.html_url)
-                .text(repo.name)
-            ).append(pages)
-          );
+          
         })
       });
 
