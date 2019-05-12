@@ -6,21 +6,31 @@
     
 </head>
 <body>
-    <ul id="user"></ul>
+    <center>
+    <table>
+        <tr>
+            <td>
+                    Gorman Technology, Git Repositories.
+                    <ul id="repo"></ul>
+
+            </td>
+        </tr>
+    </table>
+</center>
 
     <script src="../gh3/vendors/jquery-2.1.0.min.js"></script>
     <script src="../gh3/vendors/underscore-min.js"></script>
     <script src="../gh3/gh3.js"></script>
     <script>
       Gh3.Search.repos({
-        q: 'gormantec',
+        q: 'user:gormantec',
         sort: 'stars',
         order: 'desc'
       }, {}, function (err, repos) {
         if (err) { throw 'outch ...' }
         console.log(repos);
         _.each(repos, function (repo) {
-          $('#user').append(
+          $('#repo').append(
             $('<li/>').append(
               $('<a/>')
                 .attr('href', repo.html_url)
