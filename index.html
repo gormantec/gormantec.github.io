@@ -20,7 +20,7 @@
         console.log(res);
       });
       Gh3.Search.users({
-        q: '+language:Python',
+        q: '+language:Python', 
         sort: 'followers'
       }, {per_page: 50}, function (err, users) {
         if (err) { throw 'outch ...' }
