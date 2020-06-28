@@ -43,9 +43,9 @@
             .append($("<div/>")
                 .attr("class","card-body")
                 .append($("<div/>")
-                    .attr("class","card-title").text(title))
-                .append($("<p/>")
-                    .attr("class","card-text").text(description))
+                    .attr("class","card-title")
+                    .append($("<a/>").attr('href', "https://git.gormantec.com/"+title).text(title))
+                    .append($("<p/>").attr("class","card-text").text(description)))
             );
 
     }
@@ -59,14 +59,8 @@
         if (err) { throw 'outch ...' }
         console.log(repos);
         _.each(repos, function (repo) {
-
-            var pages=$("<div/>");
             if(repo.has_pages)
             {
-                console.log(repo.name);
-                console.log(repo.description);
-                pages=$("<a/>");
-                pages.attr('href', "https://git.gormantec.com/"+repo.name).text(repo.name);
                 $('#repo').append(createTile(repo.name,repo.description)); 
             }
           
