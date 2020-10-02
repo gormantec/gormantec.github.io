@@ -15,7 +15,7 @@ var getObject = function (i) {
 };
 
 
-exports.init=function(window) {
+function init(window) {
   console.log("************ load imports ***************"+ window);
   var _wasm=null;
   return {
@@ -99,6 +99,6 @@ exports.init=function(window) {
     }
   };
 }
-
+exports={init};
 
 
