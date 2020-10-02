@@ -81,8 +81,8 @@ export function init(window) {
       },
       consoleLog(text)
       {
-        console.log("_wasm:"+_wasm);
-        console.log("consoleLog:"+_wasm.__getString(text));
+        console.log("consoleLog:"+_wasm.__getString(text));//test
+        
       }
 
       ,getInnerText(e){return "";}
