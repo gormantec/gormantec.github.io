@@ -11,6 +11,7 @@
         (async (__imports) => {
             const module = await WebAssembly.instantiateStreaming(fetch("./optimized.wasm"),__imports);
             console.log("module="+module);
+            console.log(module);
             var inst=module.instance;
             console.log("instance="+inst);
             console.log("module.exports="+module.exports);
