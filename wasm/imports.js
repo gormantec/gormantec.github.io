@@ -99,6 +99,6 @@ function init(window) {
     }
   };
 }
-exports={init};
+export {init};
 
 
