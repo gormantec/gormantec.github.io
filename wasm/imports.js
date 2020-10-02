@@ -84,7 +84,6 @@ export function init(window) {
         console.log("consoleLog:"+_wasm.__getString(text));//test
         
       }
-
       ,getInnerText(e){return "";}
       ,setInnerHTML(e,s){}
       ,getInnerHTML(e){return "";}
@@ -97,9 +96,6 @@ export function init(window) {
       ,insertBefore(p,n,e){}
       ,addEventListener(p,s){}
       ,setStyleProperty(p,name,value){}
-
-
-
     }
   };
 }
