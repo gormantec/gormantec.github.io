@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World - AssemblyScript</title>
+    <script type="module">
+        import * as imports from "./imports.js";
+
+        console.log("start");
+        var _imports = imports.init(window);
+
+        const memory = new WebAssembly.Memory({ initial: 256, maximum: 256 });
+
+        _imports.env = {
+            abortStackOverflow: () => { throw new Error('overflow'); },
+            table: new WebAssembly.Table({ initial: 0, maximum: 0, element: 'anyfunc' }),
+            tableBase: 0,
+            memory: memory,
+            memoryBase: 1024,
+            STACKTOP: 0,
+            STACK_MAX: memory.buffer.byteLength
+        };
+
+        console.log(_imports);
+        fetch("./optimized.wasm").then(response => response.arrayBuffer()).
+            then(bytes => { console.log("loaded bytes"); return WebAssembly.instantiate(bytes, _imports)}).
+            then(results => {
+                //var wasmModule = await WebAssembly.instantiateStreaming(fetch("./optimized.wasm"),_imports);
+                console.log("Yaaay!");
+                console.log(results);
+                console.log(results.instance);
+                _imports.wasm = results.instance.exports;
+                results.instance.exports.show();
+            }).catch(e => console.log(e));
+    </script>
+</head>
+
+<body></body>
+
+</html>
