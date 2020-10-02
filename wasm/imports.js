@@ -51,7 +51,7 @@ export function init(window) {
         return getPointer(e);
       },
       createElement(name) {
-        var e = window.document.createElement(_wasm.__getString(name));
+        var e = window.document.createElement(_wasm.getString(name));
         return getPointer(e);
       },
       nodeName(parent) {
@@ -69,19 +69,19 @@ export function init(window) {
         return getPointer(e);
       },
       setAttribute(parent, name, value) {
-        getObject(parent).setAttribute(_wasm.__getString(name), _wasm.__getString(value));
+        getObject(parent).setAttribute(_wasm.getString(name), _wasm.getString(value));
       },
       setInnerText(parent, value) {
-        console.log("setInnerText:"+getObject(parent)+" = "+_wasm.__getString(value));
-        getObject(parent).innerHTML = _wasm.__getString(value);
+        console.log("setInnerText:"+getObject(parent)+" = "+_wasm.getString(value));
+        getObject(parent).innerHTML = _wasm.getString(value);
         console.log("innerText:"+getObject(parent).innerHTML );
       },
       getAttribute(parent, name) {
-        return getObject(parent).getAttribute(_wasm.__getString(name));
+        return getObject(parent).getAttribute(_wasm.getString(name));
       },
       consoleLog(text)
       {
-        console.log("consoleLog:"+_wasm.__getString(text));//test
+        console.log("consoleLog:"+_wasm.getString(text));//test
         
       }
       ,getInnerText(e){return "";}
