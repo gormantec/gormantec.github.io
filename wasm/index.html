@@ -10,7 +10,12 @@
         var _imports = imports.init(window);
         (async (__imports) => {
             const module = await WebAssembly.instantiateStreaming(fetch("./optimized.wasm"),__imports);
-            __imports.wasm = module.instance.exports;
+            console.log("module="+module);
+            var inst=module.instance;
+            console.log("instance="+inst);
+            console.log("module.exports="+module.exports);
+            console.log(inst.exports);
+            __imports.wasm = inst.exports;
             module.instance.exports.show();
         })(_imports);
     </script>
