@@ -17,6 +17,7 @@ var getObject = function (i) {
 
 export function init(window) {
   console.log("************ load imports ***************"+ window);
+  var _wasm=null;
   return {
     get wasm(){
       return _wasm;},
